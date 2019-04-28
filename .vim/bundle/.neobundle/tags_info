@@ -1,0 +1,8 @@
+indentLine
+lightline.vim
+neobundle.vim
+neocomplcache
+neocomplete.vim
+neosnippet
+neosnippet-snippets
+vim-trailing-whitespace

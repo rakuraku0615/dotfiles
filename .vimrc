@@ -113,6 +113,8 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-fugitive'
 """""" end bundles
 
 call neobundle#end()
@@ -131,6 +133,12 @@ imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : 
 imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
 let g:neosnippet#snippets_directory = '~/.vim/my_snippets'
 """"" end setting for neocomplete
+""""" start: setting for fugitive
+"show quick list  after Ggrep
+autocmd QuickFixCmdPost *grep* cwindow
+" show current git branch
+set statusline+=%{fugitive#statusline()}
+""""" end setting for fugitive
 " ==================== end: neobundle ========================
 
 " ==================== file yanktmp.vimrc ====================

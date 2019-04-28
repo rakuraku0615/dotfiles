@@ -43,3 +43,25 @@ $ cp dotfiles/.tmux.conf ~/.
 $ cp dotfiles/.tmux.conf ~/.
 $ cp -r dotfiles/.vim* ~/.
 ```
+*require lua*
+linux install sample
+```
+# check version
+$ vim --version | grep lua
++lua
+
+#install 
+$ sudo yum install ncurses-devel lua lua-devel
+$ git clone https://github.com/vim/vim.git
+$ cd vim/
+$ ./configure --with-features=huge --enable-multibyte --enable-luainterp=dynamic --enable-gpm --enable-cscope --enable-fontset
+$ make
+$ sudo make install
+
+# set new vim to path
+# check path
+# export path
+
+# check version
+$ vim --version | grep lua
+```

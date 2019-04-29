@@ -69,19 +69,25 @@ $ vim --version | grep lua
 ### peco
 ```
 # move to home dir
-cd ~/
+$ cd ~/
 # check newest version
-https://github.com/peco/peco/releases
+$ https://github.com/peco/peco/releases
 # install (change url to newest version)
-sudo wget "https://github.com/peco/peco/releases/download/v0.5.1/peco_linux_386.tar.gz"
+$ sudo wget "https://github.com/peco/peco/releases/download/v0.5.1/peco_linux_386.tar.gz"
 # unzip
-sudo tar xzvf peco_linux_386.tar.gz
+$ sudo tar xzvf peco_linux_386.tar.gz
 # moce to peco dit
-cd peco_linux_386
+$ cd peco_linux_386
 # change permission
-sudo chmod +x peco
+$ sudo chmod +x peco
 # set path
-sudo cp peco /usr/local/bin
+$ sudo cp peco /usr/local/bin
 # check version
-peco --version
+$ peco --version
+```
+
+### other tools
+```
+# htop
+$ sudo yum install htop
 ```

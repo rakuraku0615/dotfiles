@@ -4,6 +4,10 @@
 # functions, options, key bindings, etc.
 #
 
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
 # auto complete
 autoload -U compinit
 compinit

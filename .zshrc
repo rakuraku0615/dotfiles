@@ -72,3 +72,27 @@ setopt correct
 
 # oh-my-zsh
 #source ~/.zshrc.oh-my-zsh
+
+alias gitch='git checkout $(git branch | sed "s/*//g" | sed "s/ //g" | peco)'
+alias gitbd='git branch -D $(git branch | sed "s/*//g" | sed "s/ //g" | peco)'
+
+function peco-select-gitadd() {
+    local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
+                                  peco --query "$LBUFFER" | \
+                                  awk -F ' ' '{print $NF}')"
+    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
+      BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
+      CURSOR=$#BUFFER
+    fi
+    zle accept-line
+    # zle clear-screen
+}
+zle -N peco-select-gitadd
+bindkey '^@' peco-select-gitadd
+
+function peco-dir-open-app () {
+    find . | peco | xargs sh -c 'vim "$0" < /dev/tty'
+    zle clear-screen
+}
+zle -N peco-dir-open-app
+bindkey '^f' peco-dir-open-app

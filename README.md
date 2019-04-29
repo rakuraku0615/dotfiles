@@ -90,4 +90,6 @@ $ peco --version
 ```
 # htop
 $ sudo yum install htop
+# tig
+$ sudo yum install tig
 ```

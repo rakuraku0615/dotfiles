@@ -40,7 +40,6 @@ $ cp dotfiles/.tmux.conf ~/.
 
 ### setting vim
 ```
-$ cp dotfiles/.tmux.conf ~/.
 $ cp -r dotfiles/.vim* ~/.
 ```
 *require lua*

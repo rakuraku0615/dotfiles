@@ -41,6 +41,16 @@ $ cp dotfiles/.tmux.conf ~/.
 ### setting vim
 ```
 $ cp -r dotfiles/.vim* ~/.
+$ cd .vim
+$ mkdir -p ~/.vim/bundle
+$ mkdir .vimbackup
+$ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
+# open .vimrc and comment out neobundle plugin settings
+
+# open .vimrc and install neobundle plugin settings
+
+# open .vimrc and remove comment out neobundle plugin settings
 ```
 *require lua*
 linux install sample

@@ -53,7 +53,12 @@ $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 # open .vimrc and remove comment out neobundle plugin settings
 ```
 *require lua*
-linux install sample
+linux install sample1
+```
+sudo apt-get install vim-gnome
+```
+
+linux install sample2
 ```
 # check version
 $ vim --version | grep lua

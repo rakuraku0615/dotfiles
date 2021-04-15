@@ -8,6 +8,10 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
+# ls setting
+alias ls='ls -G'
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
 # auto complete
 autoload -U compinit
 compinit
@@ -39,18 +43,19 @@ setopt nolistbeep
 ## disable mail checking
 #MAILCHECK=0
 
+# term color
 TERM=xterm-256color
 autoload -U colors
 colors
 
-# prompt custamize
-PROMPT='[%*]%F{green}%n%f@%m:%F{green}%~%f$ '
+PROMPT='[%*]local:%F{green}%~%f
+%F{yellow}$%f '
 
 # command history
 # history file
 HISTFILE=~/.zhistory
 # history on memory
-HISTSIZE=1000
+HISTSIZE=100000
 # history on file
 SAVEHIST=6000000
 # ignoew duplicate 
@@ -74,9 +79,8 @@ setopt auto_pushd
 # choose correct command
 setopt correct
 
-# oh-my-zsh
-#source ~/.zshrc.oh-my-zsh
 
+# peco + git
 alias gitch='git checkout $(git branch | sed "s/*//g" | sed "s/ //g" | peco)'
 alias gitbd='git branch -D $(git branch | sed "s/*//g" | sed "s/ //g" | peco)'
 
@@ -100,3 +104,31 @@ function peco-dir-open-app () {
 }
 zle -N peco-dir-open-app
 bindkey '^f' peco-dir-open-app
+
+function g-cmp() {
+
+    # repository情報を取得
+    REPO=`git remote -v | grep fetch | awk -F '[:. ]' '{print $3}'`
+
+    # pecoを使って始まりと終わりのcommitを指定する
+    START=`git log --pretty=oneline | peco`
+    END=`git log --pretty=oneline | peco`
+
+    # どちらかが選択されないとerror
+    if [[ -z $START || -z $END ]];then
+        echo "canceled comparison."
+        return
+    fi
+
+    # 選択したcommit情報を出力
+    echo " from : $START"
+    echo " to   : $END"
+
+    # 選択したcommitからcompareURLを生成
+    START_COMMIT=`echo $START | awk '{print $1}'`
+    END_COMMIT=`echo $END | awk '{print $1}'`
+    URL="https://github.com/$REPO/compare/$START_COMMIT..$END_COMMIT"
+
+    # 生成したURLを出力
+    echo $URL
+}
